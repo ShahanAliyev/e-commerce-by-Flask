@@ -6,14 +6,13 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: 'Bookshop'
-      MYSQL_ROOT_PASSWORD: '12345'
-      MYSQL_USER: 'db_bookshop'
-      MYSQL_PASSWORD: '54321'
-      
+      MYSQL_ROOT_PASSWORD: '123'
+    volumes:
+      - ./mydb:/var/lib/mysql
     ports:
       - 3306:3306
   adminer:
     image: adminer:4.7.8
     restart: always
     ports:
-      - 8081:8080
+      - 8080:8080

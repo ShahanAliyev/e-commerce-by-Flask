@@ -12,7 +12,7 @@
                     <h2>{{_book.title}}</h2>
                 </div>
                 <div class="col-12 flex-row d-flex align-items-center justify-content-end m-auto mb-4">
-                    <h4 class="text-success ">{{_book.price}}</h4>
+                    <h4 class="text-success ">{{_book.price}} AZN</h4>
                 </div>
                 <div class="col-12 text-end">
                     <p>{{_book.description}} </p>
@@ -83,33 +83,45 @@
         </tbody>
     </table>
 
-    <form>
+    <form method="POST" class="form-register text-center" >
+        {{ form.csrf_token }}
         <h4 class="fw-normal text-center">ŞƏRH YAZ</h4>
         <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Tam adınız:</label>
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ad Soyad">
+            {{ form.username.label() }}
+            {{ form.username(class= "form-control", placeholder = "User Name" ) }}
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Hansı dildə oxumusunuz?</label>
             <select class="form-select" aria-label="Default select example">
                 <option value="1">Azərbaycan</option>
-                <option value="2">Rus</option>
+                <option value="2">Türk</option>
                 <option value="3">İngilis</option>
             </select>
         </div>
         <label for="customRange1" class="form-label">Qiymətləndirmə:</label>
         <input type="range" class="col-12">
-        <label for="formGroupExampleInput" class="form-label">Şərhiniz:</label>
+            {{ form.user_comment.label}}
         <div class="form-floating">
-            <textarea class="form-control"></textarea>
+            {{ form.user_comment(class = "form-control")}}
         </div>
-        <div class="form-check form-switch my-3">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-            <label class="form-check-label" for="flexSwitchCheckDefault">Bu kitabı oxumusunuzmu?</label>
+        <br> 
+        {{form.submit(class = "btn btn-primary")}}
+        <br> <br>
+        <h3>Comments</h3>
+        <div class="d-flex align-content-between flex-wrap d-flex">
+        {%  for uc in user_comment %}
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{uc.username}}</h5>
+              <p class="card-text">{{uc.user_comment}}</p>
+              <p class="card-text">{{uc.comment_date}}</p>
+            </div>
+          </div>
+        {% endfor %}
         </div>
-        <button type="button" class="btn btn-primary mb-4">Submit</button>
     </form>
 </div>
+<br><br>
 
 <div class="border-bottom border-white" style="background-color: #2FA3B8;">
     <h4 class="text-center text-light py-4 m-0">Bütün kitablar</h2>

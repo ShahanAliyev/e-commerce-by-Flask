@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\aliye\OneDrive\Desktop\tasks_fundamentals\E-commerce by Flask\env
+set VIRTUAL_ENV=C:\Users\aliye\OneDrive\Desktop\tasks_fundamentals\e-commerce-by-Flask\env
 
 if not defined PROMPT set PROMPT=$P$G
 
